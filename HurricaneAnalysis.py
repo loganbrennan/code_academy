@@ -1,10 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Spyder Editor
-
-This is a temporary script file.
-"""
-
 # names of hurricanes
 names = ['Cuba I', 'San Felipe II Okeechobee', 'Bahamas', 'Cuba II', 'CubaBrownsville', 'Tampico', 'Labor Day', 'New England', 'Carol', 'Janet', 'Carla', 'Hattie', 'Beulah', 'Camille', 'Edith', 'Anita', 'David', 'Allen', 'Gilbert', 'Hugo', 'Andrew', 'Mitch', 'Isabel', 'Ivan', 'Emily', 'Katrina', 'Rita', 'Wilma', 'Dean', 'Felix', 'Matthew', 'Irma', 'Maria', 'Michael']
 
@@ -51,7 +44,7 @@ def hurricane_dict():
     master_hurricane_dict[names[i]] = hurricane
   return master_hurricane_dict
 
-print(hurricane_dict())
+#print(hurricane_dict())
 
 
 
@@ -70,7 +63,6 @@ def canes_by_year(cane_list):
       canes_by_year_dict[current_year] = year_list
   return canes_by_year_dict
     
-
 #print(canes_by_year(hurricane_dict()))
 
 
@@ -115,7 +107,7 @@ def greatest_deaths_cane(cane_list):
       max_deaths_count = hurricane_dict()[cane]["Deaths"]
   return str(max_deaths_count) + " during hurricane " + max_deaths_cane
 
-print(greatest_deaths_cane(hurricane_dict()))
+#print(greatest_deaths_cane(hurricane_dict()))
 
 
 
@@ -138,11 +130,7 @@ def mortality_scale_to_cane(cane_list):
       mortality_ranked_canes_dict[4].append(hurricane_dict()[cane])  
   
   return(mortality_ranked_canes_dict)
-
 #print(mortality_scale_to_cane(hurricane_dict()))
-
-#sarah is cool
-
 
 # write your greatest damage function here:
 
@@ -155,18 +143,29 @@ def greatest_damage_cane(cane_list):
     elif hurricane_dict()[cane]["Damage"] > max_damage_count:
       max_damage_cane = cane
       max_damage_count = hurricane_dict()[cane]["Damage"]
-  return str(max_damgage_count) + " during hurricane " + max_damgage_cane
-
-print(greatest_damage_cane(hurricane_dict()))
-
-
-
+  return str(max_damage_count) + " during hurricane " + max_damage_cane
+#print(greatest_damage_cane(hurricane_dict()))
 
 
 # write your catgeorize by damage function here:
 
+def damage_scale_to_cane(cane_list):
+  damage_ranked_canes_dict = {0:[], 1:[], 2:[], 3:[], 4:[], "Damages not recorded": []} 
+  for cane in hurricane_dict():
+    if hurricane_dict()[cane]["Damage"] == "Damages not recorded":
+      damage_ranked_canes_dict["Damages not recorded"].append(hurricane_dict()[cane])
+    if hurricane_dict()[cane]["Damage"] == 0:
+      damage_ranked_canes_dict[0].append(hurricane_dict()[cane])
+    if type(hurricane_dict()[cane]["Damage"]) == int:
+      if hurricane_dict()[cane]["Damage"] <= 100000000:
+        damage_ranked_canes_dict[1].append(hurricane_dict()[cane])
+      if hurricane_dict()[cane]["Damage"] <= 1000000000:
+        damage_ranked_canes_dict[2].append(hurricane_dict()[cane])
+      if hurricane_dict()[cane]["Damage"] <= 10000000000:
+        damage_ranked_canes_dict[3].append(hurricane_dict()[cane])
+      if hurricane_dict()[cane]["Damage"] <= 50000000000:
+        damage_ranked_canes_dict[4].append(hurricane_dict()[cane])  
+  
+  return(damage_ranked_canes_dict)
 
-
-
-
-
+print(damage_scale_to_cane(hurricane_dict()))
