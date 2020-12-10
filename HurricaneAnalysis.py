@@ -141,8 +141,7 @@ def mortality_scale_to_cane(cane_list):
 
 #print(mortality_scale_to_cane(hurricane_dict()))
 
-
-
+#sarah is cool
 
 
 # write your greatest damage function here:
